@@ -1,0 +1,6 @@
+<launch>
+  <env name="GSCAM_CONFIG" value="v4l2src device=/dev/video0 ! video/x-raw-rgb ! ffmpegcolorspace"/>
+  <node name="thermal_cam" pkg="gscam" type="gscam" />
+  <env name="ROS_NAMESPACE" value="gscam"/>
+  <node name="thermal_proc" pkg="image_proc" type="image_proc" /> 
+</launch>

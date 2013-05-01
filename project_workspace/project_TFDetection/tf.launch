@@ -1,0 +1,5 @@
+<launch>
+   <!-- <node name="ir_tf" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 1 sensor ir_tf 100" />
+   <node name="rgb_tf" pkg="tf" type="static_transform_publisher" args="0.02153195 -0.00166353 0.02941675 0.0039 -0.0061 0.0034 1.00 sensor rgb_tf 100" /> -->
+   <node name="thermal_tf" pkg="tf" type="static_transform_publisher" args="0.07235256 0.13050466 -0.8010204 0.0531 -0.0193 0.0003 0.9984 sensor thermal_tf 100" />
+</launch>

@@ -1,0 +1,20 @@
+<package>
+  <description brief="project_TFDetection">
+
+     project_TFDetection
+
+  </description>
+  <author>Andrew Davies</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>https://github.com/gcielniak/TFHumanDetector/wiki</url>
+  <depend package="pcl"/>
+  <depend package="pcl_ros"/>
+  <depend package="rospy"/>
+  <depend package="roscpp"/>
+  <depend package="sensor_msgs"/>
+  <depend package="std_msgs"/>
+
+</package>
+
+

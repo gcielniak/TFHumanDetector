@@ -1,0 +1,41 @@
+<!-- This file is written by Andrew Davies to launch the kinect and thermal cameras together. -->
+<launch>
+
+  <!-- Bring up Kinect -->
+  <include file="///home/adavies/project_workspace/project_TFDetection/openni.launch">
+    <!-- Set cam info URLs, if not in the default location -->
+  </include>
+
+  <!-- BRING UP EXTERNAL CAMERA HERE -->
+  <include file="///home/adavies/project_workspace/project_TFDetection/thermal.launch" />
+
+  <!-- In Fuerte, you can instead load image_proc as nodelets into the
+       OpenNI nodelet manager: --> 
+  <include ns="thermal_cam" file="$(find image_proc)/launch/image_proc.launch">
+    <arg name="manager" value="/camera_nodelet_manager" />
+  </include>
+
+  <!-- Extrinsic transform publisher -->
+  <include file="///home/adavies/project_workspace/project_TFDetection/tf.launch" />
+
+  <!-- Register depth to external RGB camera and create point clouds -->
+  <!-- Replace 'my_camera' with the correct namespace -->
+  <include file="///home/adavies/project_workspace/project_TFDetection/depth_registered.launch">
+    <arg name="manager" value="/camera_nodelet_manager" />
+    <arg name="rgb" value="thermal_cam" />
+    <arg name="depth" value="camera/depth" />
+    <!-- New namespace 'my_camera_depth' contains the outputs -->
+    <arg name="depth_registered" value="thermal_cam_depth" /> 
+    <arg name="suffix" value="thermal_cam_depth" />
+  </include>
+
+  <!-- Launch rviz from this launch file -->
+  <node pkg="rviz" type="rviz" name="rviz" />
+
+  <!-- Launch the example detection algorithm -->
+  <node name="detector" pkg="project_TFDetection" type="passthrough_ros" >
+    <remap from="input" to="/camera/depth_registered/points"/>
+  </node>
+
+</launch>
+

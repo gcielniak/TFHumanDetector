@@ -1,0 +1,14 @@
+/**
+\mainpage
+\htmlinclude manifest.html
+
+\b project_TFDetection 
+
+<!-- 
+This package is to contain all relevant files for the final year project by Andrew Davies, to detect people in low light conditions using a Kinect sensor fused with a thermal camera. The Point Cloud Library is used to detect the person in the environment.
+-->
+
+-->
+
+
+*/
